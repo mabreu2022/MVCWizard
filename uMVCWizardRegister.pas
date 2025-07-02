@@ -1,0 +1,129 @@
+unit uMVCWizardRegister;
+
+interface
+
+uses
+  ToolsAPI;
+
+procedure Register;
+
+implementation
+
+uses
+  Vcl.Menus,
+  Vcl.Dialogs,
+  Vcl.FileCtrl,
+  System.SysUtils,
+  System.Classes,
+  uMVCFolderBuilder;
+
+type
+  TMVCWizard = class(TNotifierObject, IOTAWizard)
+  private
+    FMainMenuIDE: TMainMenu;
+    FMenuItemRoot: TMenuItem;
+    procedure CriarMenu;
+    procedure CriarSubmenus;
+    procedure OnClickCriarEstrutura(Sender: TObject);
+  protected
+    function GetIDString: string;
+    function GetName: string;
+    function GetState: TWizardState;
+    procedure Execute;
+  public
+    constructor Create;
+  end;
+
+var
+  MenuJaCriado: Boolean = False;
+
+procedure Register;
+begin
+  RegisterPackageWizard(TMVCWizard.Create);
+end;
+
+{ TMVCWizard }
+
+constructor TMVCWizard.Create;
+var
+  i: Integer;
+  MenuItem: TMenuItem;
+begin
+  if MenuJaCriado then Exit;
+  MenuJaCriado := True;
+
+  inherited;
+
+  FMainMenuIDE := (BorlandIDEServices as INTAServices).MainMenu;
+
+  // Limpeza segura de menus duplicados ou órfãos
+  for i := FMainMenuIDE.Items.Count - 1 downto 0 do
+  begin
+    MenuItem := FMainMenuIDE.Items[i];
+    if Assigned(MenuItem) and
+       ((MenuItem.Caption = '') or (Pos('??', MenuItem.Caption) > 0) or
+        (MenuItem.Caption = '?? MVC Tools')) then
+    begin
+      FMainMenuIDE.Items.Remove(MenuItem);
+      MenuItem.Free;
+      Break;
+    end;
+  end;
+
+  CriarMenu;
+  CriarSubmenus;
+end;
+
+procedure TMVCWizard.CriarMenu;
+begin
+  FMenuItemRoot := TMenuItem.Create(FMainMenuIDE);
+  FMenuItemRoot.Name := 'MVCWizardMenu_' + FormatDateTime('hhmmss', Now);
+  FMenuItemRoot.Caption := '?? MVC Tools';
+  FMainMenuIDE.Items.Add(FMenuItemRoot);
+end;
+
+procedure TMVCWizard.CriarSubmenus;
+var
+  SubItem: TMenuItem;
+begin
+  SubItem := TMenuItem.Create(FMenuItemRoot);
+  SubItem.Caption := 'Criar Estrutura de Pastas';
+  SubItem.Name := 'mvcCriarEstrutura';
+  SubItem.OnClick := OnClickCriarEstrutura;
+  FMenuItemRoot.Add(SubItem);
+end;
+
+procedure TMVCWizard.OnClickCriarEstrutura(Sender: TObject);
+var
+  Dir: string;
+begin
+  Dir := '';
+  if SelectDirectory('Selecione ou crie a pasta base do projeto', '', Dir,
+     [sdNewFolder, sdShowEdit, sdNewUI]) then
+  begin
+    TMVCFolderBuilder.GerarPastas(Dir);
+    MessageDlg('? Estrutura criada com sucesso em:' + sLineBreak + Dir, mtInformation, [mbOK], 0);
+  end;
+end;
+
+procedure TMVCWizard.Execute;
+begin
+  // Não usado diretamente — menu aciona via evento
+end;
+
+function TMVCWizard.GetIDString: string;
+begin
+  Result := 'com.mauricio.mvcwizard';
+end;
+
+function TMVCWizard.GetName: string;
+begin
+  Result := 'MVC Wizard';
+end;
+
+function TMVCWizard.GetState: TWizardState;
+begin
+  Result := [wsEnabled];
+end;
+
+end.

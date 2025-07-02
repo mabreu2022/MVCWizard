@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/07/02 12:23:05.000.376,=rtl.dcp</Transaction>
+    <Transaction>2025/07/02 15:58:12.977,=rtl.dcp</Transaction>
+    <Transaction>2025/07/02 15:58:25.396,=designide.dcp</Transaction>
+    <Transaction>2025/07/02 15:58:31.335,=vcl.dcp</Transaction>
+    <Transaction>2025/07/02 15:58:47.250,=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/07/02 15:58:56.456,C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCFolderBuilder.pas=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/07/02 15:59:23.061,C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\MVCWizard.dproj=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2025/07/02 15:59:56.746,=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/07/02 16:00:02.634,C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCWizardRegister.pas=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/07/02 16:05:21.890,C:\FONTES\MVCStructureWizard\MVCWizard.dproj=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\MVCWizard.dproj</Transaction>
+    <Transaction>2025/07/02 16:06:02.033,C:\FONTES\MVCStructureWizard\uMVCFolderBuilder.pas=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCFolderBuilder.pas</Transaction>
+    <Transaction>2025/07/02 16:06:24.912,C:\FONTES\MVCStructureWizard\uMVCWizardRegister.pas=C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCWizardRegister.pas</Transaction>
+  </Transactions>
+</BorlandProject>

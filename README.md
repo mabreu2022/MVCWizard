@@ -3,11 +3,6 @@
 Este projeto é um wizard para a IDE Delphi que adiciona um menu chamado **“🧱 MVC Tools”** na barra principal da IDE. Através dele, é possível gerar automaticamente uma estrutura de pastas padrão para aplicações que seguem o padrão arquitetural MVC.
 
 ---
-
-Claro, Mauricio! Aqui está um modelo de README otimizado para o seu projeto no GitHub, já destacando os novos recursos com suporte ao .INI embutido, extração automática, estrutura personalizada e uso com o wizard Delphi. Tudo pronto pra copiar e colar 😄📦
-
-📦 MVCStructureWizard
-Criação automática de estrutura de diretórios para projetos Delphi seguindo arquitetura MVC — agora com suporte a estrutura personalizada via arquivo .INI embutido no pacote.
 🧠 Funcionalidades
 - Gera estrutura de pastas para projetos MVC com base em padrão pré-definido
 - Suporte a estrutura customizável via arquivo EstruturaMVC.ini

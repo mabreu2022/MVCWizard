@@ -4,38 +4,65 @@ Este projeto é um wizard para a IDE Delphi que adiciona um menu chamado **“�
 
 ---
 
-## ✨ Funcionalidades
+Claro, Mauricio! Aqui está um modelo de README otimizado para o seu projeto no GitHub, já destacando os novos recursos com suporte ao .INI embutido, extração automática, estrutura personalizada e uso com o wizard Delphi. Tudo pronto pra copiar e colar 😄📦
 
-- ✅ Injeta o menu **MVC Tools** na barra de menus da Delphi IDE
-- ✅ Permite selecionar ou criar uma pasta base do projeto
-- ✅ Gera automaticamente subpastas organizadas para:
-  - `Model\Entities`, `Model\DAO`
-  - `Controller\Interfaces`, `Controller\Implementations`
-  - `Bridge\Endpoints`, `Bridge\Session`, `Bridge\Utils`
-  - `View\WebApp`
-  - `Services`, `Utils`, `Factory`, `Resources`
-- ✅ Evita duplicações do menu em sessões da IDE
-- ✅ Remove menus órfãos ou corrompidos ("?? MVC Tools")
-- ✅ Código modular: pode evoluir facilmente com novos submenus, presets ou interface visual personalizada
+📦 MVCStructureWizard
+Criação automática de estrutura de diretórios para projetos Delphi seguindo arquitetura MVC — agora com suporte a estrutura personalizada via arquivo .INI embutido no pacote.
+🧠 Funcionalidades
+- Gera estrutura de pastas para projetos MVC com base em padrão pré-definido
+- Suporte a estrutura customizável via arquivo EstruturaMVC.ini
+- Arquivo .INI já embutido no projeto como recurso interno
+- Extração automática do .INI no primeiro uso
+- Menu integrado à IDE Delphi com acesso rápido: 📦 MVC Tools
+- Detecção e fallback automático para estrutura padrão se o .INI estiver ausente
 
----
+🛠 Estrutura gerada (exemplo via INI)
+Com o EstruturaMVC.ini, o wizard pode gerar:
+Model\Entities
+Model\DAO
+Controller\Interfaces
+Controller\Implementations
+View\WebApp
+Services
+Utils
+Factory
+Resources
 
-## 🛠 Instalação
 
-1. Clone ou baixe este repositório
-2. Abra o arquivo `MVCWizard.dpk` no Delphi
-3. Compile e instale o pacote (`Install Package`)
-4. Reinicie a Delphi IDE
-5. O menu 🧱 **MVC Tools** aparecerá na barra principal da IDE
 
----
+📂 Onde está o INI?
+O arquivo EstruturaMVC.ini está embutido no pacote como recurso (RCDATA) e é automaticamente extraído para a pasta onde o .BPL é executado — normalmente:
+C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\
 
-## 📁 Estrutura do Projeto
 
-- `MVCWizard.dpk` — Pacote principal que registra o wizard
-- `uMVCWizardRegister.pas` — Injeção do menu na IDE e controle dos eventos
-- `uMVCFolderBuilder.pas` — Classe que gera estrutura de diretórios
-- `uMVCWizardForm.pas` — Formulário opcional com interface para seleção da pasta base
+Você pode personalizar a estrutura editando esse arquivo diretamente.
+
+🚀 Instalação
+- Clone este repositório:
+git clone https://github.com/seuusuario/MVCStructureWizard.git
+
+
+- Abra o projeto .dproj no Delphi
+- Compile o pacote normalmente
+- Reinicie a IDE e verifique se o menu 📦 MVC Tools foi adicionado
+
+📋 Como usar
+- Vá em 📦 MVC Tools > Criar Estrutura de Pastas
+- Selecione a pasta base onde deseja gerar os diretórios
+- O wizard cria tudo conforme definido no .INI
+
+🔧 Personalização avançada
+Você pode criar seus próprios perfis personalizados:
+- Crie um novo arquivo .INI com o seguinte formato:
+[Pastas]
+0=App\Services
+1=App\Interfaces
+2=Domain\Entities
+3=Infra\Persistence
+
+
+- Salve como EstruturaMVC.ini e substitua o original no diretório do .BPL
+
 
 ---
 

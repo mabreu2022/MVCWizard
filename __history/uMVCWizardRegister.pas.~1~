@@ -15,9 +15,7 @@ uses
   Vcl.FileCtrl,
   System.SysUtils,
   System.Classes,
-  System.IOUtils,
-  uMVCFolderBuilder,
-  Winapi.Windows;
+  uMVCFolderBuilder;
 
 type
   TMVCWizard = class(TNotifierObject, IOTAWizard)
@@ -39,30 +37,8 @@ type
 var
   MenuJaCriado: Boolean = False;
 
-procedure ExtrairEstruturaINI;
-var
-  RS: TResourceStream;
-  Destino: string;
-begin
-  Destino := TPath.Combine(ExtractFilePath(GetModuleName(HInstance)), 'EstruturaMVC.ini');
-
-  if not FileExists(Destino) then
-  begin
-    try
-      RS := TResourceStream.Create(HInstance, 'EstruturaINI', RT_RCDATA);
-      RS.SaveToFile(Destino);
-      OutputDebugString(PChar('?? INI extraído automaticamente para: ' + Destino));
-    except
-      OutputDebugString(PChar('? Falha ao extrair INI do recurso'));
-    end;
-  end
-  else
-    OutputDebugString(PChar('?? INI já existe em: ' + Destino));
-end;
-
 procedure Register;
 begin
-  ExtrairEstruturaINI;
   RegisterPackageWizard(TMVCWizard.Create);
 end;
 
@@ -119,21 +95,13 @@ end;
 
 procedure TMVCWizard.OnClickCriarEstrutura(Sender: TObject);
 var
-  Dir, ArqEstrutura: string;
+  Dir: string;
 begin
   Dir := '';
   if SelectDirectory('Selecione ou crie a pasta base do projeto', '', Dir,
      [sdNewFolder, sdShowEdit, sdNewUI]) then
   begin
-    ArqEstrutura := TPath.Combine(ExtractFilePath(GetModuleName(HInstance)), 'EstruturaMVC.ini');
-
-    OutputDebugString(PChar('?? Verificando arquivo INI em: ' + ArqEstrutura));
-
-    if FileExists(ArqEstrutura) then
-      TMVCFolderBuilder.GerarPastasCustomizadas(Dir)
-    else
-      TMVCFolderBuilder.GerarPastas(Dir);
-
+    TMVCFolderBuilder.GerarPastas(Dir);
     MessageDlg('? Estrutura criada com sucesso em:' + sLineBreak + Dir, mtInformation, [mbOK], 0);
   end;
 end;

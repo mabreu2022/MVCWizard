@@ -129,6 +129,11 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="uMVCFolderBuilder.pas"/>
         <DCCReference Include="uMVCWizardRegister.pas"/>
+        <RcItem Include="EstruturaMVC.ini">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>EstruturaINI</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -1027,7 +1032,7 @@
             <Platforms>
                 <Platform value="Android">False</Platform>
                 <Platform value="Android64">False</Platform>
-                <Platform value="Linux64">False</Platform>
+                <Platform value="Linux64">True</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
                 <Platform value="Win64x">False</Platform>

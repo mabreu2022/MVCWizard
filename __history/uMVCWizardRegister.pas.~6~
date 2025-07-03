@@ -138,7 +138,7 @@ begin
   end;
 end;
 
-procedure TMVCWizard.Execute;
+function TMVCWizard.Execute: procedure;
 begin
   // Não usado diretamente — menu aciona via evento
 end;

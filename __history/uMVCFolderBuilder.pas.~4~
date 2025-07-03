@@ -1,4 +1,4 @@
-﻿unit uMVCFolderBuilder;
+unit uMVCFolderBuilder;
 
 interface
 
@@ -46,7 +46,7 @@ begin
     if not TDirectory.Exists(Caminho) then
     begin
       TDirectory.CreateDirectory(Caminho);
-      OutputDebugString(PChar('✅ Criada pasta padrão: ' + Caminho));
+      OutputDebugString(PChar('? Criada pasta padr�o: ' + Caminho));
     end;
   end;
 end;
@@ -58,19 +58,18 @@ var
   i, TotalCriadas: Integer;
   IniPath: string;
 begin
-  OutputDebugString(PChar('🚀 Entrou no GerarPastasCustomizadas'));
+  OutputDebugString(PChar('?? Entrou no GerarPastasCustomizadas'));
 
   if not TDirectory.Exists(BasePath) then
     TDirectory.CreateDirectory(BasePath);
 
-//  IniPath := TPath.Combine(GetCurrentDir, 'EstruturaMVC.ini');
-  IniPath := TPath.Combine(ExtractFilePath(GetModuleName(HInstance)), 'EstruturaMVC.ini');
+  IniPath := TPath.Combine(GetCurrentDir, 'EstruturaMVC.ini');
 
-  OutputDebugString(PChar('📂 Verificando arquivo INI em: ' + IniPath));
+  OutputDebugString(PChar('?? Verificando arquivo INI em: ' + IniPath));
 
   if not FileExists(IniPath) then
   begin
-    OutputDebugString(PChar('⚠️ Arquivo INI não encontrado: ' + IniPath));
+    OutputDebugString(PChar('?? Arquivo INI n�o encontrado: ' + IniPath));
     Exit;
   end;
 
@@ -87,14 +86,14 @@ begin
       if not TDirectory.Exists(Caminho) then
       begin
         TDirectory.CreateDirectory(Caminho);
-        OutputDebugString(PChar('📁 Pasta criada: ' + Caminho));
+        OutputDebugString(PChar('?? Pasta criada: ' + Caminho));
         Inc(TotalCriadas);
       end;
       Inc(i);
     end;
 
     if TotalCriadas = 0 then
-      OutputDebugString(PChar('⚠️ Nenhuma pasta personalizada criada — verifique conteúdo do INI'));
+      OutputDebugString(PChar('?? Nenhuma pasta personalizada criada � verifique conte�do do INI'));
   finally
     Ini.Free;
   end;

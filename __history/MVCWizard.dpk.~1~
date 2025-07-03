@@ -1,7 +1,6 @@
 package MVCWizard;
 
 {$R *.res}
-{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -34,7 +33,7 @@ requires
   vcl;
 
 contains
-  uMVCFolderBuilder in 'uMVCFolderBuilder.pas',
-  uMVCWizardRegister in 'uMVCWizardRegister.pas';
+  uMVCFolderBuilder in 'C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCFolderBuilder.pas',
+  uMVCWizardRegister in 'C:\Users\Mauricio Abreu\Documents\Embarcadero\Studio\Projects\uMVCWizardRegister.pas';
 
 end.
